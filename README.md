@@ -26,17 +26,27 @@ Min | Max | Mean | Median |
 ## Bottlenecks in the program <img src="https://user-images.githubusercontent.com/21998037/68543630-f146bf00-03b9-11ea-9ec1-2e1acc756eb6.jpg" height="40" align="center"> 
 One of the main bottlenecks spotted while analyzing the performance results was the file reading. Additionally, we’ve noticed that we would try to use `put()` to verify if there was an exception caused, which would indicate that a _Hashmap_ key didn’t exist. 
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/21998037/68544760-e6def200-03c6-11ea-9ba4-0b75f57f55b7.png">
+<em>Profiler from NetBeans IDE</em>
+</p>
+
 </br>
 
 ---
 ## Improvement hypothesis :crystal_ball:
-A possibility for dealing with the constant file input would be to simply read the entire file content at once - keeping the data in memory would enable us to perform operations faster. Next step can be to eliminate the little delay the `try`, `catch` blocks might cause by transforming them into an `if-else` statement, using the benefits of the faster `contains` operation as a condition.    
+A possibility for dealing with the constant file input would be to simply read the entire file content at once - keeping the data in memory would enable us to perform operations faster. Next step can be to eliminate the little delay the `try`, `catch` blocks might cause by transforming them into an `if-else` statement, using the benefits of the faster `contains` operation as a condition - [commit df356](https://github.com/elit0451/CodePerformanceAndOptimization/commit/df35663eac9a93b27da788d751a36240ebdd2902).    
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/21998037/68544808-39201300-03c7-11ea-8e9b-cf5648f3bd35.png">
+<em>Profiler from NetBeans IDE</em>
+</p>
 
 </br>
 
 ---
 ## Improved performance :rabbit2:
-The following box-plot demonstrates the results achieved after profiling the code optimization following our hypothesis. The same tactics of closing the background programs and executing 10 times apply here for the reason of consistency measurements. With this implementation, we achieved an improvement of **51%** over the original implementation.
+The following box-plot demonstrates the results achieved after profiling the code optimization following our hypothesis. The same tactics of closing the background programs and executing 10 times (+ not adding performance results coming from `print_tally()` execution) apply here for the reason of consistency measurements. We have also made use of the `print_tally` method in the sense of comparing the results presented with the original implementation values and they were a 100% match, which proves that we have kept the logic but improve the program performance. With this implementation, we achieved an improvement of **51%** over the original implementation.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/21998037/68543365-5dbfbf00-03b6-11ea-8fd0-7ae424eb8ca6.png" width="60%">
@@ -51,7 +61,7 @@ Min | Max | Mean | Median |
 </br>
 </br>
 
-An overall comparison is demonstrated by the next box-plot diagrams, where **Group 1** is the old program results and **Group 2** shows the improved version.
+An overall comparison is demonstrated by the next box-plot diagrams, where **Group 1** :small_blue_diamond: is the old program results and **Group 2** :small_orange_diamond: shows the improved version.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/21998037/68544235-7aadbf80-03c1-11ea-9c08-967078af0556.png" width="60%">
