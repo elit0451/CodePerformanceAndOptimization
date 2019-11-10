@@ -49,7 +49,7 @@ A possibility for dealing with the constant file input would be to simply read t
 The following box-plot demonstrates the results achieved after profiling the code optimization following our hypothesis. The same tactics of closing the background programs and executing 10 times (+ not adding performance results coming from `print_tally()` execution) apply here for the reason of consistency measurements. We have also made use of the `print_tally` method in the sense of comparing the results presented with the original implementation values and they were a 100% match, which proves that we have kept the logic but improve the program performance. With this implementation, we achieved an improvement of **51%** over the original implementation.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/21998037/68543365-5dbfbf00-03b6-11ea-8fd0-7ae424eb8ca6.png" width="60%">
+<img src="https://user-images.githubusercontent.com/21998037/68544964-cb74e680-03c8-11ea-928e-c82b43894458.png" width="60%">
 </p>
 
 :mag_right: The new **minimum**, **maximum**, **average** and **median** values can be observed as follows:
