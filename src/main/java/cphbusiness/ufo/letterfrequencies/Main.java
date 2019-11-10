@@ -13,13 +13,11 @@ import static java.util.stream.Collectors.toMap;
 /**
  * Frequency analysis Inspired by
  * https://en.wikipedia.org/wiki/Frequency_analysis
- *
- * @author kasper
  */
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        String fileName = "/Users/kasper/GITHUB/ufo/letterfrequencies/src/main/resources/FoundationSeries.txt";
+        String fileName = "/letterfrequencies/src/main/resources/FoundationSeries.txt";
         Reader reader = new FileReader(fileName);
         Map<Integer, Long> freq = new HashMap<>();
         tallyChars(reader, freq);
